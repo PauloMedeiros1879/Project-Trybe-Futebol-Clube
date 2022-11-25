@@ -1,5 +1,5 @@
 import { IUsers, IJwt } from '../interfaces';
-import UserModel from '../database/models/usersModel';
+import UserModel from '../database/models/userM';
 import tokenJWT from '../middlewares/jwt';
 
 export default class UserS {

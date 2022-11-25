@@ -1,5 +1,5 @@
 import * as express from 'express';
-import User from '../database/models/usersModel';
+import User from '../database/models/userM';
 import UserService from '../services/userS';
 import UserController from '../controllers/userC';
 
