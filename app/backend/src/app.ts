@@ -1,4 +1,5 @@
 import * as express from 'express';
+import error from './middlewares/error';
 import userR from './routes/userR';
 
 class App {
@@ -12,6 +13,7 @@ class App {
     // Não remover essa rota
     this.app.get('/', (req, res) => res.json({ ok: true }));
     this.app.use('/login', userR);
+    this.app.use(error);
   }
 
   private config():void {
