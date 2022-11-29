@@ -6,7 +6,8 @@ type errInformation = {
 
 const errorsInformation: errInformation = {
   missingFields: { message: 'All fields must be filled', code: 400 },
-  invalidLogin: { message: 'Incorrect email or password', code: 401 },
+  invalidAcess: { message: 'Incorrect email or password', code: 401 },
+  invalidToken: { message: 'Token must be a valid token', code: 401 },
 };
 
 export default function errorMiddleware(

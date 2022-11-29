@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
-import { IUsers } from '../interfaces';
+import { recover } from '../middlewares/jwt';
+import IUserLogin from '../interfaces/IUserLogin';
 import userS from '../services/userS';
 
 export default class UserController {
@@ -11,10 +12,18 @@ export default class UserController {
     next: NextFunction,
   ): Promise<Response | void> {
     try {
-      const token = await this.userService.login(req.body as IUsers);
+      const token = await this.userService.login(req.body as IUserLogin);
       return res.status(200).json(token);
     } catch (err) {
       next(err);
     }
+  }
+
+  static async validate(req: Request, res: Response, _next: NextFunction) {
+    const { authorization } = req.headers;
+    if (!authorization) throw new Error('Mensagem de erro');
+    const user = recover(authorization);
+    const { role } = user.data;
+    res.status(200).json({ role });
   }
 }

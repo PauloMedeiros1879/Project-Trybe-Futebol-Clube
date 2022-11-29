@@ -1,4 +1,4 @@
-import { IUsers, IJwt } from '../interfaces';
+import { IUserLogin, IJwt } from '../interfaces';
 import UserModel from '../database/models/userM';
 import tokenJWT from '../middlewares/jwt';
 
@@ -8,7 +8,7 @@ export default class UserS {
     typeof UserModel,
   ) { }
 
-  async login(userLogin: IUsers): Promise<IJwt> {
+  async login(userLogin: IUserLogin): Promise<IJwt> {
     const user = await this.userModel.findOne(
       { where:
         { email:
@@ -16,7 +16,7 @@ export default class UserS {
       },
     );
 
-    if (!user) throw new Error('invalid');
+    if (!user) throw new Error('invalidAcess');
     const token = tokenJWT(
       user.id,
       user.username,
