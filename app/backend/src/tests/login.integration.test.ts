@@ -31,13 +31,11 @@ describe('Testa endpoint POST /login', () => {
 
     it('Testa o login do usuário e retornar o status 200', async () => {
       const res = await chai.request(app).post('/login').send(userLogin);
-      
       chai.expect(res.status).to.equal(200);
     });
 
     it('Testa o login do usuário e retornar um token', async () => {
       const res = await chai.request(app).post('/login').send(userLogin);
-      
       chai.expect(res.body).to.have.property('token');
     });
   });
