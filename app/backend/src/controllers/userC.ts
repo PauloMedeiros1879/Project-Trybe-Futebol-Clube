@@ -19,7 +19,7 @@ export default class UserController {
     }
   }
 
-  static async validate(req: Request, res: Response, _next: NextFunction) {
+  static async validated(req: Request, res: Response, _next: NextFunction) {
     const { authorization } = req.headers;
     if (!authorization) throw new Error('Mensagem de erro');
     const user = recover(authorization);

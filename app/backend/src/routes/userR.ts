@@ -15,7 +15,7 @@ usersRoute.post('/', validate, (req, res, next) => {
 });
 
 usersRoute.get('/validate', (req, res, next) => {
-  UserController.validate(req, res, next);
+  UserController.validated(req, res, next);
 });
 
 export default usersRoute;
