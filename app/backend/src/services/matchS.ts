@@ -13,4 +13,15 @@ export default class MatchS {
     });
     return matches;
   }
+
+  async matchFilter(inProgress: boolean): Promise<MatchModel[]> {
+    const matches = await this.matchModel.findAll({
+      where: { inProgress },
+      include: [
+        { model: TeamModel, as: 'teamHome', attributes: { exclude: ['id'] } },
+        { model: TeamModel, as: 'teamAway', attributes: { exclude: ['id'] } },
+      ],
+    });
+    return matches;
+  }
 }
