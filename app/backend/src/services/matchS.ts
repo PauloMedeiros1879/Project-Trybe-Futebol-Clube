@@ -1,7 +1,7 @@
 import TeamModel from '../database/models/teamsM';
 import MatchModel from '../database/models/matchesM';
 
-export default class MatchService {
+export default class MatchS {
   constructor(private matchModel: typeof MatchModel) {}
 
   async match(): Promise<MatchModel[]> {
