@@ -8,4 +8,10 @@ export default class TeamsC {
     const teams = await this.teamService.findAllTeams();
     return res.status(200).json(teams);
   }
+
+  async findIdTeams(req: Request, res: Response): Promise<Response> {
+    const { id } = req.params;
+    const teams = await this.teamService.findIdTeams(Number(id));
+    return res.status(200).json(teams);
+  }
 }
