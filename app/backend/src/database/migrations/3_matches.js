@@ -13,6 +13,12 @@ module.exports = {
       home_team: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+        references: {
+          model: 'teams',
+          key: 'id'
+        }
       },
 
       home_team_goals: {
@@ -22,9 +28,16 @@ module.exports = {
 
       away_team: {
         type: Sequelize.INTEGER,
+        allowNull: false,
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+        references: {
+          model: 'teams',
+          key: 'id'
+        }
       },
-
-      away_teams_goals: {
+      
+      away_team_goals: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
@@ -32,11 +45,11 @@ module.exports = {
       in_progress: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
-      },
-    })
+      }
+    });
   },
-
+  
   down: async (queryInterface) => {
-    await queryInterface.dropTable('matches')
-  }
+    await queryInterface.dropTable('matches');
+  },
 };
