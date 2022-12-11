@@ -11,6 +11,8 @@ export default class MatchC {
       const matches = await this.matchService.match();
       return res.status(200).json(matches);
     }
-    return res.status(200).json({});
+    const whileProgress = inProgress === 'true';
+    const matches = await this.matchService.matchFilter(whileProgress);
+    return res.status(200).json(matches);
   }
 }
