@@ -14,7 +14,7 @@ const { expect } = chai;
 describe('Testa endpoint POST /login', () => {
   const userLogin: IUserLogin = { email: 'admin@admin.com', password: 'secret_admin' };
 
-  describe('Testa o método POST', () => {
+  describe('Testando o método POST', () => {
     before(() => {
       sinon.stub(userM, 'findOne').resolves({
         id: 1,
@@ -29,12 +29,12 @@ describe('Testa endpoint POST /login', () => {
       sinon.restore();
     });
 
-    it('Testa o login do usuário e retornar o status 200', async () => {
+    it('Testando se a rota /login do usuário e retornar o status 200', async () => {
       const res = await chai.request(app).post('/login').send(userLogin);
       chai.expect(res.status).to.equal(200);
     });
 
-    it('Testa o login do usuário e retornar um token', async () => {
+    it('Testando se a rota /login do usuário e retornar um token', async () => {
       const res = await chai.request(app).post('/login').send(userLogin);
       chai.expect(res.body).to.have.property('token');
     });
