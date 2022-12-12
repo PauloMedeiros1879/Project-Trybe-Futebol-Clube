@@ -1,3 +1,3 @@
 export default interface IJwt {
-  token: string;
+  token: string
 }

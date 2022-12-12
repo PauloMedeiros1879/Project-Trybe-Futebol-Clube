@@ -8,6 +8,7 @@ const errorsInformation: errInformation = {
   missingFields: { message: 'All fields must be filled', code: 400 },
   invalidAcess: { message: 'Incorrect email or password', code: 401 },
   invalidToken: { message: 'Token must be a valid token', code: 401 },
+  NotExistTeam: { message: 'There is no team with such id!', code: 404 },
 };
 
 export default function errorMiddleware(
