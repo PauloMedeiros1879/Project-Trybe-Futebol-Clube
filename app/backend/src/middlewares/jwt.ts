@@ -5,7 +5,11 @@ import { IJwt, ILoad } from '../interfaces';
 
 const secret = process.env.JWT_SECRET || 'jwt_secret';
 
-export default function tokenJWT(id: number, username: string, role: string): IJwt {
+export default function tokenJWT(
+  id: number,
+  username: string,
+  role: string,
+): IJwt {
   const token = jwt
     .sign({
       data:
