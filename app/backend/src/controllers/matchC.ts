@@ -20,4 +20,10 @@ export default class MatchC {
     const matches = await this.matchService.matchCreate(req.body);
     return res.status(201).json(matches);
   }
+
+  async matchUpdate(req: Request, res: Response): Promise<Response> {
+    const { id } = req.params;
+    const msg = await this.matchService.matchUpdate(Number(id));
+    return res.status(200).json(msg);
+  }
 }
