@@ -69,6 +69,6 @@ export default class MatchS {
       awayTeamGoals: away }, {
       where: { id },
     })
-      .then(() => ({ message: 'Goals count changed successfully!' }));
+      .then(() => ({ message: 'Goal count changed successfully!' }));
   }
 }
