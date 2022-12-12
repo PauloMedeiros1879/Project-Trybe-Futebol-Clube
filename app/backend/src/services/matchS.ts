@@ -1,5 +1,6 @@
 import TeamM from '../database/models/teamsM';
 import MatchM from '../database/models/matchesM';
+import check from '../middlewares/check';
 
 export default class MatchS {
   constructor(private matchModel: typeof MatchM) {}
@@ -44,5 +45,12 @@ export default class MatchS {
     });
 
     return matches;
+  }
+
+  async matchCreate(match: MatchM): Promise<MatchM> {
+    const existTeam = await check([match.homeTeam, match.awayTeam]);
+    if (!existTeam) throw new Error('notExistTeam');
+    const matchUp = await this.matchModel.create(match);
+    return matchUp;
   }
 }

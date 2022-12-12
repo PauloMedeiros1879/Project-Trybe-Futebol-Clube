@@ -10,8 +10,8 @@ export default class Matchs extends Model {
   declare awayTeam: number;
   declare awayTeamGoals: number;
   declare inProgress: boolean;
-  teamHome?: ITeams;
-  teamAway?: ITeams;
+  declare teamHome?: ITeams;
+  declare teamAway?: ITeams;
 }
 
 Matchs.init(
