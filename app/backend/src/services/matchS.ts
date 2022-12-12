@@ -62,4 +62,13 @@ export default class MatchS {
     })
       .then(() => ({ message: 'Finished' }));
   }
+
+  async matchGoalsUpdate(id: number, home: number, away: number): Promise<object> {
+    return this.matchModel.update({
+      homeTeamGoals: home,
+      awayTeamGoals: away }, {
+      where: { id },
+    })
+      .then(() => ({ message: 'Goals count changed successfully!' }));
+  }
 }
