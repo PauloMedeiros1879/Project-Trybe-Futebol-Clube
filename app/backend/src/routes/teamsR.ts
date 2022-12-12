@@ -9,7 +9,6 @@ const teams = new TeamController(new TeamService(TeamsModel));
 const teamsRouter = express.Router();
 
 teamsRouter.get('/', (req, res) => teams.findAllTeams(req, res));
-
 teamsRouter.get('/:id', (req, res) => teams.findIdTeams(req, res));
 
 export default teamsRouter;
