@@ -47,10 +47,10 @@ export default class MatchS {
     return matches;
   }
 
-  async matchCreate(match: MatchM): Promise<MatchM> {
-    const existTeam = await check([match.homeTeam, match.awayTeam]);
+  async matchCreate(matches: MatchM): Promise<MatchM> {
+    const existTeam = await check([matches.homeTeam, matches.awayTeam]);
     if (!existTeam) throw new Error('notExistTeam');
-    const matchUp = await this.matchModel.create(match);
+    const matchUp = await this.matchModel.create(matches);
     return matchUp;
   }
 }

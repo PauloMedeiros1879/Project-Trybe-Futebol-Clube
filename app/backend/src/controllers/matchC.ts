@@ -15,4 +15,9 @@ export default class MatchC {
     const matches = await this.matchService.matchFilter(whileProgress);
     return res.status(200).json(matches);
   }
+
+  async matchCreate(req: Request, res: Response): Promise<Response> {
+    const matches = await this.matchService.matchCreate(req.body);
+    return res.status(201).json(matches);
+  }
 }
