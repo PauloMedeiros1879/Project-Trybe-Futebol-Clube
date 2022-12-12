@@ -54,4 +54,12 @@ export default class MatchS {
     const matchUp = await this.matchModel.create(newMatch);
     return matchUp;
   }
+
+  async matchUpdate(id: number): Promise<object> {
+    return this.matchModel.update({
+      inProgress: false }, {
+      where: { id },
+    })
+      .then(() => ({ message: 'Finished' }));
+  }
 }
