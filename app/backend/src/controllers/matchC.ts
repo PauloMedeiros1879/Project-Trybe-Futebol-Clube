@@ -26,4 +26,13 @@ export default class MatchC {
     const msg = await this.matchService.matchUpdate(Number(id));
     return res.status(200).json(msg);
   }
+
+  async matchGoalsUpdate(req: Request, res: Response): Promise<Response> {
+    const { id } = req.params;
+    const { homeTeamGoals, awayTeamGoals } = req.body;
+    const msg = await this.matchService
+      .matchGoalsUpdate(Number(id), Number(homeTeamGoals), Number(awayTeamGoals));
+
+    return res.status(200).json(msg);
+  }
 }
